@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problema 197: Mensaje Interceptado</title>
+
+    <!-- Tipografías (si no hay internet, se usa Georgia) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=IM+Fell+English&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Cabecera: Bill Cipher sobre el bosque -->
+    <header class="header">
+        <div class="container">
+            <div class="bill"></div>
+            <span class="badge">Acepta el Reto 197</span>
+            <h1>Mensaje Interceptado</h1>
+            <p>Proyecto en PHP para descifrar los mensajes del Agente 0069.</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- Formulario -->
+        <section class="card">
+            <h2>Descodificador</h2>
+            <p>Escribe el mensaje cifrado (X″) y mira cómo se descifra paso a paso.</p>
+
+            <form action="index.php" method="POST" class="form">
+                <div class="form-group">
+                    <label for="mensaje">Mensaje cifrado (X″)</label>
+                    <input type="text" id="mensaje" name="mensaje" placeholder="Ej: BnodJos, dBneam" required>
+                </div>
+                <button type="submit" class="btn">Descodificar mensaje</button>
+            </form>
+        </section>
+
+        <!-- Explicación del algoritmo -->
+        <section class="card">
+            <h2>Cómo funciona</h2>
+            <div class="grid">
+                <div class="step-box">
+                    <h3>Paso 1: X″ → X′</h3>
+                    <p>
+                        Se deshace el desorden de posiciones. Las letras en posiciones pares van al principio y las impares se colocan detrás, en orden inverso.
+                    </p>
+                </div>
+                <div class="step-box">
+                    <h3>Paso 2: X′ → X</h3>
+                    <p>
+                        Se buscan los bloques seguidos que no son vocales (consonantes, espacios y signos) y se le da la vuelta a cada bloque.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Proyecto Problema 197. Repositorio de GitHub: <code>problemanum197</code></p>
+    </footer>
+
+</body>
+</html>
