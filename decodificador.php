@@ -49,4 +49,15 @@ function deshacerInversionConsonantes($texto) {
 }
 
 
+// Proceso completo: X'' -> X   (Miembro A + Miembro B)
+function descodificarMensaje($mensaje) {
+    $xPrime = deshacerIntercalado($mensaje);
+    $xOriginal = deshacerInversionConsonantes($xPrime);
 
+    return [
+        'xDoublePrime'  => $mensaje,
+        'xPrime'        => $xPrime,
+        'xOriginal'     => $xOriginal,
+        'formatoSalida' => $mensaje . " => " . $xOriginal
+    ];
+}
