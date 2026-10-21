@@ -12,42 +12,42 @@
 <body>
 
     <!-- Cabecera: Bill Cipher sobre el bosque -->
-    <header class="header">
-        <div class="container">
-            <div class="bill"></div>
-            <span class="badge">Acepta el Reto 197</span>
+    <header class="cabecera">
+        <div class="contenedor">
+            <div class="triangulo"></div>
+            <span class="etiqueta">Acepta el Reto 197</span>
             <h1>Mensaje Interceptado</h1>
             <p>Proyecto en PHP para descifrar los mensajes del Agente 0069.</p>
         </div>
     </header>
 
-    <main class="container">
+    <main class="contenedor">
 
         <!-- Formulario -->
-        <section class="card">
+        <section class="tarjeta">
             <h2>Descodificador</h2>
             <p>Escribe el mensaje cifrado (X″) y mira cómo se descifra paso a paso.</p>
 
-            <form action="index.php" method="POST" class="form">
-                <div class="form-group">
+            <form action="index.php" method="POST" class="formulario">
+                <div class="grupo">
                     <label for="mensaje">Mensaje cifrado (X″)</label>
                     <input type="text" id="mensaje" name="mensaje" placeholder="Ej: BnodJos, dBneam" required>
                 </div>
-                <button type="submit" class="btn">Descodificar mensaje</button>
+                <button type="submit" class="boton">Descodificar mensaje</button>
             </form>
         </section>
 
         <!-- Explicación del algoritmo -->
-        <section class="card">
+        <section class="tarjeta">
             <h2>Cómo funciona</h2>
-            <div class="grid">
-                <div class="step-box">
+            <div class="columnas">
+                <div class="caja">
                     <h3>Paso 1: X″ → X′</h3>
                     <p>
                         Se deshace el desorden de posiciones. Las letras en posiciones pares van al principio y las impares se colocan detrás, en orden inverso.
                     </p>
                 </div>
-                <div class="step-box">
+                <div class="caja">
                     <h3>Paso 2: X′ → X</h3>
                     <p>
                         Se buscan los bloques seguidos que no son vocales (consonantes, espacios y signos) y se le da la vuelta a cada bloque.
@@ -55,9 +55,121 @@
                 </div>
             </div>
         </section>
+
+        <!-- Pseudocódigo -->
+        <section class="tarjeta">
+            <h2>Pseudocódigo</h2>
+
+            <h3>Paso 1: X″ → X′ (Miembro A)</h3>
+<pre>FUNCION deshacerIntercalado(texto)
+    izquierda = ""
+    derecha = ""
+    PARA cada posición i del texto (empezando en 0)
+        letra = texto[i]
+        SI i es par ENTONCES
+            izquierda = izquierda + letra
+        SINO
+            derecha = letra + derecha
+    DEVOLVER izquierda + derecha</pre>
+
+            <h3>Paso 2: X′ → X (Miembro B)</h3>
+<pre>FUNCION deshacerInversionConsonantes(texto)
+    resultado = ""
+    bloque = ""
+    PARA cada letra del texto
+        SI la letra es vocal ENTONCES
+            resultado = resultado + bloque al revés + letra
+            bloque = ""
+        SINO
+            bloque = bloque + letra
+    DEVOLVER resultado + bloque al revés</pre>
+
+            <h3>Proceso completo: X″ → X</h3>
+<pre>FUNCION descodificarMensaje(mensaje)
+    xPrime = deshacerIntercalado(mensaje)
+    xOriginal = deshacerInversionConsonantes(xPrime)
+    DEVOLVER xOriginal</pre>
+        </section>
+
+        <!-- Frases de prueba -->
+        <section class="tarjeta">
+            <h2>Frases de prueba</h2>
+            <div class="tabla-contenedor">
+                <table class="tabla">
+                    <thead>
+                        <tr>
+                            <th>X″ (cifrado)</th>
+                            <th>X′ (paso 1)</th>
+                            <th>X (original)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>Aauirnedleiua nBo</code></td>
+                            <td><code>AurelianoB uednia</code></td>
+                            <td><code>Aureliano Buendia</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>E. .n.ualn cnhuag aMda  rle</code></td>
+                            <td><code>E nul nugad rel aM ahcna...</code></td>
+                            <td><code>En un lugar de la Mancha...</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>aueoi</code></td>
+                            <td><code>aeiou</code></td>
+                            <td><code>aeiou</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>BnodJo s, dBneam</code></td>
+                            <td><code>BoJ ,dnameB sodn</code></td>
+                            <td><code>Bond, James Bond</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>dnany</code></td>
+                            <td><code>daynn</code></td>
+                            <td><code>danny</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Reparto del trabajo en pareja -->
+        <section class="tarjeta">
+            <h2>Trabajo en pareja</h2>
+            <p>Repositorio de GitHub: <code>problemanum197</code></p>
+
+            <table class="tabla">
+                <thead>
+                    <tr>
+                        <th>Miembro</th>
+                        <th>Transformación</th>
+                        <th>Función PHP</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Miembro A</td>
+                        <td>X″ → X′</td>
+                        <td><code>deshacerIntercalado()</code></td>
+                    </tr>
+                    <tr>
+                        <td>Miembro B</td>
+                        <td>X′ → X</td>
+                        <td><code>deshacerInversionConsonantes()</code></td>
+                    </tr>
+                    <tr>
+                        <td>Los dos</td>
+                        <td>X″ → X (completo)</td>
+                        <td><code>descodificarMensaje()</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
     </main>
 
-    <footer class="footer">
+    <footer class="pie">
         <p>Proyecto Problema 197. Repositorio de GitHub: <code>problemanum197</code></p>
     </footer>
 
